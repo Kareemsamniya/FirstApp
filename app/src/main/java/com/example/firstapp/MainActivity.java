@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("ka ","onRestart");
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Log.d("ka","onRestart");
+        Toast.makeText(this, "onRestart", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -30,15 +30,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("k ","onResume");
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Log.d("ka","onResume");
+        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("k ","onResume");
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        Log.d("ka","onPause");
+        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("ka","onStop");
+        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("ka","onDestroy");
+        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show();
     }
 }
