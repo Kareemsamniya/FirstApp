@@ -11,7 +11,9 @@ import androidx.room.PrimaryKey;
 public class MyTask
 {
     @PrimaryKey(autoGenerate = true)//تحديد الصفة كمفتاح رئيسي والذي يُنتجح بشكل تلقائي
-    /** رقم المهمة
+    /**
+     *  رقم المهمة
+     */
     public long keyid;
     /**
      * درجة الأهمية 1-5
@@ -21,8 +23,14 @@ public class MyTask
      * نص المهمة
      */
     public String text;
-    /** زمن بناء المهمة
+    /**
+     * زمن بناء المهمة
+     */
     public lomg time;
+    /**
+     * هل تمت المهمة
+     */
+    public boolean isCompleted;
     /**
      * رقم موضوع المهمة
      */
@@ -35,8 +43,11 @@ public class MyTask
     @Override
     public String toString() {
         return "MyTask{" +
-                "importance=" + importance +
+                "keyid=" + keyid +
+                ", importance=" + importance +
                 ", text='" + text + '\'' +
+                ", time=" + time +
+                ", isCompleted=" + isCompleted +
                 ", subjeId=" + subjeId +
                 ", userId=" + userId +
                 '}';
