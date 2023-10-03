@@ -4,8 +4,9 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.Database;
 
+import com.example.firstapp.data.SubjectTable.MySubject;
+import com.example.firstapp.data.SubjectTable.MySubjectQuery;
 import com.example.firstapp.data.myTasksTable.MyTask;
 import com.example.firstapp.data.myTasksTable.MyTaskQuery;
 import com.example.firstapp.data.useresTable.MyUser;
@@ -13,7 +14,7 @@ import com.example.firstapp.data.useresTable.MyUserQuery;
 
 @Database(entities = {MyUser.class, MySubject.class, MyTask.class},version = 5)
 
-public class AppDatabase {
+public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase db;
 
     public abstract MyUserQuery getMyUserQuery();
