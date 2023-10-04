@@ -8,6 +8,7 @@ public class MySubject
     @PrimaryKey(autoGenerate = true)
     public long key_id;
     public String title;
+    public String Title;
 
     @Override
     public String toString() {
@@ -15,5 +16,8 @@ public class MySubject
                 "key_id=" + key_id +
                 ", title='" + title + '\'' +
                 '}';
+    }
+
+    public void setTitle(String math) {
     }
 }
