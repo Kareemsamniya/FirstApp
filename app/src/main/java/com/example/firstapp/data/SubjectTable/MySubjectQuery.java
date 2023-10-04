@@ -1,5 +1,6 @@
 package com.example.firstapp.data.SubjectTable;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -11,7 +12,10 @@ import java.util.List;
 
 import androidx.room.Query;
 
-
+/**
+ * واجهة تحوي عمليات / استعمالات على قاعدة البيانات
+ */
+@Dao // لتحديد ان الواجهة تحوي استعلامات على قاعدة بيانات
 public interface MySubjectQuery
 {
     @Query("SELECT * FROM MyUser")

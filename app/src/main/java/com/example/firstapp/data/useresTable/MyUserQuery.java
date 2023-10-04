@@ -37,5 +37,4 @@ public interface MyUserQuery
     void insert(MyUser myUser);
     @Update
     void update(MyUser...values);
-
 }
