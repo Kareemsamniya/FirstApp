@@ -26,7 +26,7 @@ public class MyTask
     /**
      * زمن بناء المهمة
      */
-    public lomg time;
+    public long time;
     /**
      * هل تمت المهمة
      */
@@ -40,6 +40,7 @@ public class MyTask
      */
     public long userId;
 
+
     @Override
     public String toString() {
         return "MyTask{" +
@@ -51,5 +52,13 @@ public class MyTask
                 ", subjeId=" + subjeId +
                 ", userId=" + userId +
                 '}';
+    }
+
+    public long getKeyid() {
+        return keyid;
+    }
+
+    public void setKeyid(long keyid) {
+        this.keyid = keyid;
     }
 }

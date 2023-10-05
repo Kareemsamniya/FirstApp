@@ -3,6 +3,8 @@ package com.example.firstapp.data.useresTable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.example.firstapp.data.SubjectTable.MySubject;
 //Entity = Table =جدول
 // عندما نريد ان تنعامل مع هذه الفئة كجدول معطيات
 
@@ -10,8 +12,7 @@ import androidx.room.PrimaryKey;
  * فئة تمثل المستعمل
  */
 @Entity
-public class MyUser
-{
+public class MyUser {
     @PrimaryKey(autoGenerate = true)// تحديد الصفة كمفتاح رئيسي والذي يُنتج بشكل اوتوماتيكي
     public long keyid;
     @ColumnInfo(name = "full_Name")// اعطاء اسم ديد للعامود-الصفة في الجدول
@@ -31,4 +32,11 @@ public class MyUser
                 '}';
     }
 
+    public long getKeyid() {
+        return keyid;
+    }
+
+    public void setKeyid(long keyid) {
+        this.keyid = keyid;
+    }
 }

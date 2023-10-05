@@ -10,16 +10,14 @@ import com.example.firstapp.data.useresTable.MyUser;
 
 import java.util.List;
 
-import androidx.room.Query;
-
 /**
  * واجهة تحوي عمليات / استعمالات على قاعدة البيانات
  */
 @Dao // لتحديد ان الواجهة تحوي استعلامات على قاعدة بيانات
 public interface MySubjectQuery
 {
-    @Query("SELECT * FROM MyUser")
-    List<MyUser> getAll();
+    @Query("SELECT * FROM MySubject")
+    List<MySubject> getAll();
     @Insert
     void insertAll(MySubject users);
 
@@ -30,7 +28,7 @@ public interface MySubjectQuery
     void delete(int id);
 
     @Insert
-    void insert(MyUser myUser);
+    void insert(MySubject myUser);
     @Update
     void update(MyUser...values);
 }

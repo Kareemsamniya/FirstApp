@@ -1,13 +1,17 @@
 package com.example.firstapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.firstapp.data.AppDatabase;
 import com.example.firstapp.data.SubjectTable.MySubject;
 import com.example.firstapp.data.SubjectTable.MySubjectQuery;
+import com.example.firstapp.data.useresTable.MyUser;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +35,18 @@ public class MainActivity extends AppCompatActivity {
         //4) اضافة كائن للجدول
         subjectQuery.insert(s1);
         subjectQuery.insert(s2);
-    }
 
+        //5) فحص هل تم حفظ ما سبق
+        //استخراج وطباعة جميع معطيات جدول المواضيع
+        final List<MyUser> allSubjects = subjectQuery.getAll();
+        for(MySubject s : allSubjects)
+        {
+            Log.d("kareem",s.Title);
+            Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -40,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "onRestart", Toast.LENGTH_SHORT).show();
 
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("ka","OnRestart");
+        Toast.makeText(this, "OnRestart", Toast.LENGTH_SHORT).show();
     }
 
     @Override

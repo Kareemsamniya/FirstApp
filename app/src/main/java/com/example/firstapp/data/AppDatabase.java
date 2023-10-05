@@ -56,6 +56,9 @@ public abstract class AppDatabase extends RoomDatabase
      * @return
      */
 
+    /**
+     *singilton(عند اعادة الكائن يعيده مرة واحدة)
+     */
     public static AppDatabase getDB(Context context) {
         if (db == null) {
             db = Room.databaseBuilder(context,
