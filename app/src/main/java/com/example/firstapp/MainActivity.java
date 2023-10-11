@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         //5) فحص هل تم حفظ ما سبق
         //استخراج وطباعة جميع معطيات جدول المواضيع
-        final List<MyUser> allSubjects = subjectQuery.getAll();
+        final List<MySubject> allSubjects = subjectQuery.getAll();
         for(MySubject s : allSubjects)
         {
             Log.d("kareem",s.Title);
