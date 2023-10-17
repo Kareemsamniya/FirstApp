@@ -2,6 +2,8 @@ package com.example.firstapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +17,25 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //spnr1
+    private Spinner spnrSubject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //spnr2
+        spnrSubject=findViewById(R.id.spnrSubject   );
+        //spnr3 prepare adapter
+        ArrayAdapter<String>adapter=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //spnr 4 data source
+        String[] ar={"Math","CS","Phs","Arb","Eng"};
+        //spnr 5
+        adapter.addAll(ar);
+        //spnr 6
+        spnrSubject.setAdapter(adapter);
+
 
         Log.d("","");
         Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
