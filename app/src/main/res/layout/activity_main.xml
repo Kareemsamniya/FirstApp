@@ -2,23 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/spnrSubject"
+    android:id="@+id/RelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/task"
     tools:context=".MainActivity"
     tools:ignore="DuplicateIds">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        app:srcCompat="@drawable/task" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button"
+        <SearchView
+            android:id="@+id/srshV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:id="@+id/spnrSubject"
@@ -26,6 +34,12 @@
             android:layout_height="50dp"
             android:layout_weight="0"
             android:contentDescription="@string/app_name" />
+
+        <ListView
+            android:id="@+id/lstvTask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 </RelativeLayout>
 
