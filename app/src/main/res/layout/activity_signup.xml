@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="E-mail"
-                android:textSize="20sp" />
+                android:inputType="textEmailAddress"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="password"
-                android:textSize="20sp" />
+                android:inputType="textPassword"
+                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="re-password"
-                android:textSize="20sp" />
+                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -76,12 +78,12 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etname"
+                android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="name"
-                android:textSize="20sp" />
+                tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,12 +91,12 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etphone"
+                android:id="@+id/etPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="phone"
-                android:textSize="20sp" />
+                tools:ignore="TouchTargetSizeCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

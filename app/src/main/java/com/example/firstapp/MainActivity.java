@@ -3,27 +3,39 @@ package com.example.firstapp;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.firstapp.data.AppDatabase;
 import com.example.firstapp.data.SubjectTable.MySubject;
 import com.example.firstapp.data.SubjectTable.MySubjectQuery;
 import com.example.firstapp.data.useresTable.MyUser;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FloatingActionButton fabAdd;
+    private SearchView srshV;
+    private ListView lstvTask;
+
     //spnr1
     private Spinner spnrSubject;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fabAdd =(FloatingActionButton) findViewById(R.id.fabAdd);
+        srshV =(SearchView) findViewById(R.id.srshV);
+        lstvTask =(ListView) findViewById(R.id.lstvTask);
+
         //spnr2
         spnrSubject=findViewById(R.id.spnrSubject   );
         //spnr3 prepare adapter

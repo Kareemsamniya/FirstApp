@@ -4,17 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class SignInActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail;
     private TextInputEditText etpassword;
-    private TextInputEditText btnsignin;
-    private TextInputEditText btnsignUp;
+    private Button btnsignin;
+    private Button btnsignUp;
+    private Button btnSave;
+    private Button btnCancel;
 
 
     @Override
@@ -23,8 +23,10 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         etEmail= (TextInputEditText) findViewById(R.id.etEmail);
         etpassword= (TextInputEditText) findViewById(R.id.etpassword);
-        Button btnsignin= (Button) findViewById(R.id.btnsignin);
-        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
+        btnsignin= (Button) findViewById(R.id.btnsignin);
+        btnsignUp=(Button) findViewById(R.id.btnSignUp);
+        btnSave=(Button) findViewById(R.id.btnSave);
+        btnCancel=(Button) findViewById(R.id.btnCancel);
 
 
     }

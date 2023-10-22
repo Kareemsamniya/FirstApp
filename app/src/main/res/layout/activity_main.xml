@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:baselineAlignBottom="false"
         android:clickable="true"
-        app:srcCompat="@drawable/task" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"

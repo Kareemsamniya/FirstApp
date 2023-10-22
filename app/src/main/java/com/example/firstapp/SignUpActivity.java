@@ -15,6 +15,9 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout etname;
     private TextInputLayout etphone;
     private Button btnSave;
+    private Button btnCancel;
+
+
 
 
     @Override
@@ -24,9 +27,11 @@ public class SignUpActivity extends AppCompatActivity {
         etEmail= (TextInputLayout) findViewById(R.id.etEmail);
         etpassword= (TextInputLayout) findViewById(R.id.etpassword);
         etRepassword= (TextInputLayout) findViewById(R.id.etRepassword);
-        etname= (TextInputLayout) findViewById(R.id.etname);
-        etphone= (TextInputLayout) findViewById(R.id.etphone);
+        etname= (TextInputLayout) findViewById(R.id.etName);
+        etphone= (TextInputLayout) findViewById(R.id.etPhone);
         btnSave=(Button) findViewById(R.id.btnSave);
+        btnCancel=(Button) findViewById(R.id.btnCancel);
+
 
 
     }
