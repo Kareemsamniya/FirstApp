@@ -1,7 +1,9 @@
 package com.example.firstapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,27 +20,21 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        etSplashWelcome= findViewById(R.id.etSplashWelcome);
         //start next activity (screen) automatically  after period of time
-        Handler h=new Handler();
-        Runnable r=new Runnable() {
+        Handler h = new Handler();
+        Runnable r = new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 //to open new activity from current to next
-                Intent i= new Intent(SplashScreen.this, SignInActivity.class);
+                Intent i = new Intent(SplashScreen.this, SignInActivity.class);
                 startActivity(i);
                 //to close current activity
                 finish();
             }
         };
-        h.postDelayed(r,3000);
+        h.postDelayed(r, 3000);
     }
 
 
-
-
-        etSplashWelcome=  findViewById(R.id.etSplashWelcome);
-
-
-    }
 }

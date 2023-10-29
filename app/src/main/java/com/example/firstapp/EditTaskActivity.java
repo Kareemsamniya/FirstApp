@@ -14,7 +14,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private Button btnEditTaskUpdateTask;
     private Button btnEditTaskCancelTask;
-    private TextView tvImportance;
+    private TextView tvEditTaskImportance;
     private SeekBar skbrEditTaskImportance;
     private TextInputLayout etEditTaskShortTitle;
     private TextInputLayout etEditTaskText;
@@ -27,7 +27,7 @@ public class EditTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_task);
         btnEditTaskUpdateTask = findViewById(R.id.btnEditTaskUpdateTask);
         btnEditTaskCancelTask = findViewById(R.id.btnEditTaskCancelTask);
-        etEditTaskShortTitle = findViewById(R.id.etEditTaskShortTitle);
+        tvEditTaskImportance = findViewById(R.id.tvEditTaskImportance);
         skbrEditTaskImportance = findViewById(R.id.skbrEditTaskImportance);
         etEditTaskShortTitle= findViewById(R.id.etEditTaskShortTitle);
         etEditTaskText= findViewById(R.id.etEditTaskText);
