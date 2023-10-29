@@ -15,14 +15,14 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnUpdateTask"
+                android:id="@+id/btnEditTaskUpdateTask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="UPDATE" />
 
             <Button
-                android:id="@+id/btnCancelTask"
+                android:id="@+id/btnEditTaskCancelTask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -31,13 +31,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvImportance"
+            android:id="@+id/tvEditTaskImportance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Importance" />
 
         <SeekBar
-            android:id="@+id/skbrImportance"
+            android:id="@+id/skbrEditTaskImportance"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etShortTitle"
+                android:id="@+id/etEditTaskShortTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etText"
+                android:id="@+id/etEditTaskText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"

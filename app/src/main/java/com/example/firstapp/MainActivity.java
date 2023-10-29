@@ -13,31 +13,30 @@ import androidx.appcompat.widget.SearchView;
 import com.example.firstapp.data.AppDatabase;
 import com.example.firstapp.data.SubjectTable.MySubject;
 import com.example.firstapp.data.SubjectTable.MySubjectQuery;
-import com.example.firstapp.data.useresTable.MyUser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FloatingActionButton fabAdd;
-    private SearchView srshV;
-    private ListView lstvTask;
+    private FloatingActionButton fabMainAdd;
+    private SearchView srshMainV;
+    private ListView lstMainVTask;
 
     //spnr1
-    private Spinner spnrSubject;
+    private Spinner spnrMainSubject;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fabAdd =(FloatingActionButton) findViewById(R.id.fabAdd);
-        srshV =(SearchView) findViewById(R.id.srshV);
-        lstvTask =(ListView) findViewById(R.id.lstvTask);
+        fabMainAdd = findViewById(R.id.fabMainAdd);
+        srshMainV = findViewById(R.id.srshMainV);
+        lstMainVTask = findViewById(R.id.lstMainVTask);
 
         //spnr2
-        spnrSubject=findViewById(R.id.spnrSubject   );
+        spnrMainSubject=findViewById(R.id.spnrMainSubject);
         //spnr3 prepare adapter
         ArrayAdapter<String>adapter=new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         //spnr 5
         adapter.addAll(ar);
         //spnr 6
-        spnrSubject.setAdapter(adapter);
+        spnrMainSubject.setAdapter(adapter);
 
 
         Log.d("","");

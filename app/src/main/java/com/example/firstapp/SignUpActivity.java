@@ -9,13 +9,13 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private TextInputLayout etEmail;
-    private TextInputLayout etpassword;
-    private TextInputLayout etRepassword;
-    private TextInputLayout etname;
-    private TextInputLayout etphone;
-    private Button btnSave;
-    private Button btnCancel;
+    private TextInputLayout etSignUpEmail;
+    private TextInputLayout etSignUpPassword;
+    private TextInputLayout etSignUpRepassword;
+    private TextInputLayout etSignUpName;
+    private TextInputLayout etSignUpPhone;
+    private Button btnSignUpSave;
+    private Button btnSignUpCancel;
 
 
 
@@ -24,13 +24,13 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        etEmail= (TextInputLayout) findViewById(R.id.etEmail);
-        etpassword= (TextInputLayout) findViewById(R.id.etpassword);
-        etRepassword= (TextInputLayout) findViewById(R.id.etRepassword);
-        etname= (TextInputLayout) findViewById(R.id.etName);
-        etphone= (TextInputLayout) findViewById(R.id.etPhone);
-        btnSave=(Button) findViewById(R.id.btnSave);
-        btnCancel=(Button) findViewById(R.id.btnCancel);
+        etSignUpEmail=  findViewById(R.id.etSignUpEmail);
+        etSignUpPassword=  findViewById(R.id.etSignUpPassword);
+        etSignUpRepassword=  findViewById(R.id.etSignUpRepassword);
+        etSignUpName= findViewById(R.id.etSignUpName);
+        etSignUpPhone=  findViewById(R.id.etSignUpPhone);
+        btnSignUpSave= findViewById(R.id.btnSignUpSave);
+        btnSignUpCancel= findViewById(R.id.btnSignUpCancel);
 
 
 

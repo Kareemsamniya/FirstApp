@@ -10,7 +10,7 @@
     tools:ignore="DuplicateIds">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
+        android:id="@+id/fabMainAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -25,19 +25,19 @@
         android:orientation="vertical">
 
         <SearchView
-            android:id="@+id/srshV"
+            android:id="@+id/srshMainV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Spinner
-            android:id="@+id/spnrSubject"
+            android:id="@+id/spnrMainSubject"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="0"
             android:contentDescription="@string/app_name" />
 
         <ListView
-            android:id="@+id/lstvTask"
+            android:id="@+id/lstMainVTask"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

@@ -1,6 +1,5 @@
 package com.example.firstapp;
 
-import static com.example.firstapp.R.id.etWelcome;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,17 +12,32 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private TextView etWelcome;
-    private Button btnGo;
-    private ImageView imageView1;
+    private TextView etSplashWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        btnGo= (Button) findViewById(R.id.btnGo);
-        imageView1= (ImageView) findViewById(R.id.imageView1);
-        etWelcome= (TextView) findViewById(R.id.etWelcome);
+        //start next activity (screen) automatically  after period of time
+        Handler h=new Handler();
+        Runnable r=new Runnable() {
+            @Override
+            public void run()
+            {
+                //to open new activity from current to next
+                Intent i= new Intent(SplashScreen.this, SignInActivity.class);
+                startActivity(i);
+                //to close current activity
+                finish();
+            }
+        };
+        h.postDelayed(r,3000);
+    }
+
+
+
+
+        etSplashWelcome=  findViewById(R.id.etSplashWelcome);
 
 
     }

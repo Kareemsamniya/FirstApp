@@ -9,24 +9,24 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class SignInActivity extends AppCompatActivity {
 
-    private TextInputEditText etEmail;
-    private TextInputEditText etpassword;
-    private Button btnsignin;
-    private Button btnsignUp;
-    private Button btnSave;
-    private Button btnCancel;
+    private TextInputEditText etSignInEmail;
+    private TextInputEditText etSignInPassword;
+    private Button btnSignInSignIn;
+    private Button btnSignInSignUp;
+    private Button btnSignInSave;
+    private Button btnSignInCancel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        etEmail= (TextInputEditText) findViewById(R.id.etEmail);
-        etpassword= (TextInputEditText) findViewById(R.id.etpassword);
-        btnsignin= (Button) findViewById(R.id.btnsignin);
-        btnsignUp=(Button) findViewById(R.id.btnSignUp);
-        btnSave=(Button) findViewById(R.id.btnSave);
-        btnCancel=(Button) findViewById(R.id.btnCancel);
+        etSignInEmail=  findViewById(R.id.etSignInEmail);
+        etSignInPassword=  findViewById(R.id.etSignInPassword);
+        btnSignInSignIn=  findViewById(R.id.btnSignInSignIn);
+        btnSignInSignUp= findViewById(R.id.btnSignInSignUp);
+        btnSignInSave= findViewById(R.id.btnSignInSave);
+        btnSignInCancel= findViewById(R.id.btnSignInCancel);
 
 
     }
