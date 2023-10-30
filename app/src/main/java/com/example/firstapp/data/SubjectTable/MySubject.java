@@ -25,6 +25,11 @@ public class MySubject
         this.key_id = key_id;
     }
 
-    public void setTitle(String math) {
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 }

@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 
 import com.example.firstapp.data.AppDatabase;
 import com.example.firstapp.data.SubjectTable.MySubject;
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         MySubjectQuery subjectQuery = db.getMySubjectQuery();
         // 3) بناء كائن من نوع الجدول وتحديد قيم الصفات
         MySubject s1=new MySubject();
-        s1.setTitle("math");
+        s1.Title="math";
         MySubject s2= new MySubject();
         s2.Title="computers";
         //4) اضافة كائن للجدول

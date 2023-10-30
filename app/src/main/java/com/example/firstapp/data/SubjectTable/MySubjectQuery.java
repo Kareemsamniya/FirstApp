@@ -19,16 +19,16 @@ public interface MySubjectQuery
     @Query("SELECT * FROM MySubject")
     List<MySubject> getAll();
     @Insert
-    void insertAll(MySubject users);
+    void insertAll(MySubject mySubjects);
 
     @Delete
-    void delete(MySubject user);
+    void delete(MySubject mySubject);
 
     @Query("Delete From MyUser WHERE keyid=:id ")
     void delete(int id);
 
     @Insert
-    void insert(MySubject myUser);
+    void insert(MySubject mySubject);
     @Update
     void update(MyUser...values);
 }

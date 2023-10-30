@@ -17,7 +17,7 @@ import com.example.firstapp.data.useresTable.MyUserQuery;
 version
 عند احداث تغيير يخص جدول او جداول علينا تغيير رقم الأصدار ليتم بناء قاعدة البينات من جديد
  */
-@Database(entities = {MyUser.class, MySubject.class, MyTask.class},version = 1)
+@Database(entities = {MyUser.class, MySubject.class, MyTask.class},version = 2)
 /**
  * الفئة المسئولة عن بناء قاعدة البيانات لكل جداولها
  * وتوفر لنا كائن للتعامل مع قاعدة البيانات
