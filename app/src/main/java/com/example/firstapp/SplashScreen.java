@@ -27,7 +27,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 //to open new activity from current to next
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, SignInActivity.class);
                 startActivity(i);
                 //to close current activity
                 finish();
