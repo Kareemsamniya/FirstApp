@@ -1,13 +1,16 @@
 package com.example.firstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firstapp.data.AppDatabase;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     //spnr1
     private Spinner spnrMainSubject;
+    private ActionBar.Tab et_Input;
 
 
     @Override
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     @Override
     protected void onStart() {

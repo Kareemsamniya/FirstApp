@@ -2,7 +2,9 @@ package com.example.firstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,5 +31,12 @@ public class SignInActivity extends AppCompatActivity {
         btnSignInCancel= findViewById(R.id.btnSignInCancel);
 
 
+    }
+    public void onClickGo1(View V)
+    {
+
+        Intent i = new Intent(SignInActivity.this, SignUpActivity.class);
+        startActivity(i);
+        finish();
     }
 }
