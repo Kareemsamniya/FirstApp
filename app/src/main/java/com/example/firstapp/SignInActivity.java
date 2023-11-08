@@ -32,7 +32,7 @@ public class SignInActivity extends AppCompatActivity {
 
 
     }
-    public void onClickGo1(View V)
+    public void onClickSignInSignUp(View V)
     {
 
         Intent i = new Intent(SignInActivity.this, SignUpActivity.class);

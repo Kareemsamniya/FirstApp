@@ -7,16 +7,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.textfield.TextInputLayout;
-
+import com.google.android.material.textfield.TextInputEditText;
 public class AddTaskActivity extends AppCompatActivity {
 
     private Button btnAddTaskSaveTask;
     private Button btnAddTaskCancelTask;
     private TextView tvAddTaskImportance;
     private SeekBar skbrAddTaskImportance;
-    private TextInputLayout etAddTaskShortTitle;
-    private TextInputLayout etAddTaskText;
+    private TextInputEditText etAddTaskShortTitle;
+    private TextInputEditText etAddTaskText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private TextInputLayout etSignUpEmail;
-    private TextInputLayout etSignUpPassword;
-    private TextInputLayout etSignUpRepassword;
-    private TextInputLayout etSignUpName;
-    private TextInputLayout etSignUpPhone;
+    private TextInputEditText etSignUpEmail;
+    private TextInputEditText etSignUpPassword;
+    private TextInputEditText etSignUpRepassword;
+    private TextInputEditText etSignUpName;
+    private TextInputEditText etSignUpPhone;
     private Button btnSignUpSave;
     private Button btnSignUpCancel;
 
@@ -36,6 +36,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
+    }
+    public void onClickSignUpCancel(View V)
+    {
+
+        finish();
     }
 
 }

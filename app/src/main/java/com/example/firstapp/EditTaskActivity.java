@@ -8,16 +8,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
 public class EditTaskActivity extends AppCompatActivity {
 
     private Button btnEditTaskUpdateTask;
     private Button btnEditTaskCancelTask;
     private TextView tvEditTaskImportance;
     private SeekBar skbrEditTaskImportance;
-    private TextInputLayout etEditTaskShortTitle;
-    private TextInputLayout etEditTaskText;
+    private TextInputEditText etEditTaskShortTitle;
+    private TextInputEditText etEditTaskText;
 
 
 
