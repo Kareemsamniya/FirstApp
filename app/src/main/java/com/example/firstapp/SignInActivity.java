@@ -15,8 +15,7 @@ public class SignInActivity extends AppCompatActivity {
     private TextInputEditText etSignInPassword;
     private Button btnSignInSignIn;
     private Button btnSignInSignUp;
-    private Button btnSignInSave;
-    private Button btnSignInCancel;
+
 
 
     @Override
@@ -27,8 +26,7 @@ public class SignInActivity extends AppCompatActivity {
         etSignInPassword=  findViewById(R.id.etSignInPassword);
         btnSignInSignIn=  findViewById(R.id.btnSignInSignIn);
         btnSignInSignUp= findViewById(R.id.btnSignInSignUp);
-        btnSignInSave= findViewById(R.id.btnSignInSave);
-        btnSignInCancel= findViewById(R.id.btnSignInCancel);
+
 
 
     }
@@ -37,6 +35,6 @@ public class SignInActivity extends AppCompatActivity {
 
         Intent i = new Intent(SignInActivity.this, SignUpActivity.class);
         startActivity(i);
-        finish();
+
     }
 }
