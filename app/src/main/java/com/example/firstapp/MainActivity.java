@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     //spnr1
     private Spinner spnrMainSubject;
-    private ActionBar.Tab et_Input;
 
 
     @Override

@@ -37,4 +37,17 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(i);
 
     }
+    private void checkEmailPassw()
+    {
+        boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
+        //استخراج النص من حقل الايميل
+        String email = etSignInEmail.getText().toString();
+        //استخراج نص كلمة المرور
+        String password = etSignInPassword.getText().toString();
+        //فحص الايميل ان كان طوله اقل من 6 او لا يحوي @ فهو خطأ
+        if (etSignInEmail.length() < 6)
+        {
+
+        }
+    }
 }
