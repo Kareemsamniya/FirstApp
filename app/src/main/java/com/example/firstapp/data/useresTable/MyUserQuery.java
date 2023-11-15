@@ -24,6 +24,9 @@ public interface MyUserQuery
             "passw = :myPassw LIMIT 1")
     MyUser checkEmailPassw(String myEmail, String myPassw);
 
+    @Query("SELECT * FROM MyUser WHERE email = :myEmail")
+    MyUser checkEmail(String myEmail);
+
     @Insert
     void insertAll(MyUser... users);
 

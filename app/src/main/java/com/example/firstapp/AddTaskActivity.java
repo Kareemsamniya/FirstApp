@@ -1,6 +1,7 @@
 package com.example.firstapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -27,5 +28,28 @@ public class AddTaskActivity extends AppCompatActivity {
         skbrAddTaskImportance = findViewById(R.id.skbrAddTaskImportance);
         etAddTaskShortTitle= findViewById(R.id.etAddTaskShortTitle);
         etAddTaskText= findViewById(R.id.etAddTaskText);
+    }
+    public void onClickAddTask(View V)
+    {
+
+        checkAddTask();
+    }
+    private void checkAddTask() {
+        boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
+        //استخراج النص من حقل العنوان القصير
+        String ShortTitle = etAddTaskShortTitle.getText().toString();
+        //استخراج نص النص
+        String Text = etAddTaskText.getText().toString();
+        //فحص النص القصير ان كان فارغ
+        if (ShortTitle.contains(" ") == true) {
+            //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
+            isAllOk = false;
+            //عرض ملاحظة خطأ على الشاشة داخل حقل النص القصير
+            etAddTaskShortTitle.setError("Wrong Short Title");
+        }
+        if (Text.contains(" ") == true) {
+            isAllOk = false;
+            etAddTaskText.setError("Wrong Text");
+        }
     }
 }

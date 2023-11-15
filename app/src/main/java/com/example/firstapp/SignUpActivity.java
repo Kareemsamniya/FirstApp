@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.firstapp.data.AppDatabase;
+import com.example.firstapp.data.useresTable.MyUser;
+import com.example.firstapp.data.useresTable.MyUserQuery;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -63,29 +66,29 @@ public class SignUpActivity extends AppCompatActivity {
         //استخراج نص رقم الهاتف
         String Phone = etSignUpPhone.getText().toString();
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي @ فهو خطأ
-        if (etSignUpEmail.length() < 6 || Email.contains("@") == false)
+        if (Email.length() < 6 || Email.contains("@") == false)
         {
             //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
             isAllOk = false;
             //عرض ملاحظة خطأ على الشاشة داخل حقل البريد
             etSignUpEmail.setError("Wrong Email");
         }
-        if(etSignUpPassword.length() < 8 || Password.contains(" ") == true)
+        if(Password.length() < 8 || Password.contains(" ") == true)
         {
             isAllOk = false;
             etSignUpPassword.setError("Wrong Password");
         }
-        if(etSignUpRepassword.length() < 8 || RePassword.contains(" ") == true)
+        if(RePassword.length() < 8 || RePassword.contains(" ") == true)
         {
             isAllOk = false;
             etSignUpRepassword.setError("Wrong Re-Password");
         }
-        if(etSignUpName.length() < 2 || Password.contains(" ") == true)
+        if(Name.length() < 2 || Name.contains(" ") == true)
         {
             isAllOk = false;
             etSignUpName.setError("Wrong Name");
         }
-        if(etSignUpPhone.length() < 10 || etSignUpPhone.length() < 10 || Password.contains(" ") == true )
+        if(Phone.length() != 10 || Phone.contains(" ") == true )
         {
             isAllOk = false;
             etSignUpPhone.setError("Wrong Phone");
@@ -93,6 +96,29 @@ public class SignUpActivity extends AppCompatActivity {
         if(isAllOk)
         {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+            //بناء قاعدة بيانات وارجاع مؤشر عليها 1
+            AppDatabase db= AppDatabase.getDB(getApplicationContext());
+            //مؤشر لكائن عمليات الجدول 2
+            MyUserQuery userQuery=db.getMyUserQuery();
+            //فحص هل البريد الالكتروني موجود من قبل اي تم التسجيل من قبل
+            if(userQuery.checkEmail(Email)!=null)
+            {
+                etSignUpEmail.setError("found email");
+            }
+            else// ان لم يكن البريد موجودا نقوم ببناء كائن للمستعمل وادخاله في الجدول MyUser المستعملين
+            {
+                //بناء كائن
+                MyUser myUser = new MyUser();
+                //تجديد قيم الصفات بالقيم التي استخرجناها
+                myUser.email=Email;
+                myUser.fullName=Name;
+                myUser.phone=Phone;
+                myUser.passw=Password;
+                //اضافة الكائن للجدول
+                userQuery.insert(myUser);
+                //اغلاق الشاشة الخالية
+                finish();
+            }
         }
 
 
