@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -41,6 +42,39 @@ public class SignUpActivity extends AppCompatActivity {
     {
 
         finish();
+    }
+
+    public void onClickSignUp(View V)
+    {
+
+        checkSignUp();
+    }
+    private void checkSignUp()
+    {
+        boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
+        //استخراج النص من حقل الايميل
+        String email = etSignUpEmail.getText().toString();
+        //استخراج نص كلمة المرور
+        String password = etSignUpPassword.getText().toString();
+        //فحص الايميل ان كان طوله اقل من 6 او لا يحوي @ فهو خطأ
+        if (etSignUpEmail.length() < 6 || email.contains("@") == false)
+        {
+            //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
+            isAllOk = false;
+            //عرض ملاحظة خطأ على الشاشة داخل حقل البريد
+            etSignUpPassword.setError("Wrong Password");
+        }
+        if(etSignUpPassword.length() < 8 || password.contains(" ") == true)
+        {
+            isAllOk = false;
+            etSignUpPassword.setError("Wrong Password");
+        }
+        if(isAllOk)
+        {
+            Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
 }

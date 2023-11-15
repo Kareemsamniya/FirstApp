@@ -38,12 +38,12 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(i);
 
     }
-    public void onClickSignInSignIn(View V)
+    public void onClickSignIn(View V)
     {
 
-        checkEmailPassw();
+        checkSignIn();
     }
-    private void checkEmailPassw()
+    private void checkSignIn()
     {
         boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
         //استخراج النص من حقل الايميل
@@ -58,7 +58,7 @@ public class SignInActivity extends AppCompatActivity {
             //عرض ملاحظة خطأ على الشاشة داخل حقل البريد
             etSignInPassword.setError("Wrong Password");
         }
-        if(etSignInPassword.length() < 8 || password.contains("") == true)
+        if(etSignInPassword.length() < 8 || password.contains(" ") == true)
         {
             isAllOk = false;
             etSignInPassword.setError("Wrong Password");
