@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 public class SignInActivity extends AppCompatActivity {
 
     private TextInputEditText etSignInEmail;
@@ -47,21 +49,23 @@ public class SignInActivity extends AppCompatActivity {
     {
         boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
         //استخراج النص من حقل الايميل
-        String email = etSignInEmail.getText().toString();
+        String Email = etSignInEmail.getText().toString();
         //استخراج نص كلمة المرور
-        String password = etSignInPassword.getText().toString();
+        String Password = etSignInPassword.getText().toString();
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي @ فهو خطأ
-        if (etSignInEmail.length() < 6 || email.contains("@") == false)
+
+       ;
+        if (Email.length() < 6 || Email.contains("@") == false)
         {
             //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
             isAllOk = false;
             //عرض ملاحظة خطأ على الشاشة داخل حقل البريد
-            etSignInPassword.setError("Wrong Password");
+            Email.setError("Wrong Email");
         }
-        if(etSignInPassword.length() < 8 || password.contains(" ") == true)
+        if(Phone.length() < 8 || Password.contains(" ") == true)
         {
             isAllOk = false;
-            etSignInPassword.setError("Wrong Password");
+            Phone.setError("Wrong Password");
         }
         if(isAllOk)
         {

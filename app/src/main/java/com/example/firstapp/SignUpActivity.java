@@ -53,21 +53,42 @@ public class SignUpActivity extends AppCompatActivity {
     {
         boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
         //استخراج النص من حقل الايميل
-        String email = etSignUpEmail.getText().toString();
+        String Email = etSignUpEmail.getText().toString();
         //استخراج نص كلمة المرور
-        String password = etSignUpPassword.getText().toString();
+        String Password = etSignUpPassword.getText().toString();
+        //استخراج نص تأكيد كلمة المرور
+        String RePassword = etSignUpRepassword.getText().toString();
+        //استخراج نص الاسم
+        String Name = etSignUpName.getText().toString();
+        //استخراج نص رقم الهاتف
+        String Phone = etSignUpPhone.getText().toString();
         //فحص الايميل ان كان طوله اقل من 6 او لا يحوي @ فهو خطأ
-        if (etSignUpEmail.length() < 6 || email.contains("@") == false)
+        if (etSignUpEmail.length() < 6 || Email.contains("@") == false)
         {
             //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
             isAllOk = false;
             //عرض ملاحظة خطأ على الشاشة داخل حقل البريد
-            etSignUpPassword.setError("Wrong Password");
+            etSignUpEmail.setError("Wrong Email");
         }
-        if(etSignUpPassword.length() < 8 || password.contains(" ") == true)
+        if(etSignUpPassword.length() < 8 || Password.contains(" ") == true)
         {
             isAllOk = false;
             etSignUpPassword.setError("Wrong Password");
+        }
+        if(etSignUpRepassword.length() < 8 || RePassword.contains(" ") == true)
+        {
+            isAllOk = false;
+            etSignUpRepassword.setError("Wrong Re-Password");
+        }
+        if(etSignUpName.length() < 2 || Password.contains(" ") == true)
+        {
+            isAllOk = false;
+            etSignUpName.setError("Wrong Name");
+        }
+        if(etSignUpPhone.length() < 10 || etSignUpPhone.length() < 10 || Password.contains(" ") == true )
+        {
+            isAllOk = false;
+            etSignUpPhone.setError("Wrong Phone");
         }
         if(isAllOk)
         {
