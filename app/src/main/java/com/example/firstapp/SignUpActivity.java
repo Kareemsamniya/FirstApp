@@ -78,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
             isAllOk = false;
             etSignUpPassword.setError("Wrong Password");
         }
-        if(RePassword.length() < 8 || RePassword.contains(" ") == true)
+        if(RePassword.equals(Password) == false)
         {
             isAllOk = false;
             etSignUpRepassword.setError("Wrong Re-Password");
