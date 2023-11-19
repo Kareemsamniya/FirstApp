@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         fabMainAdd = findViewById(R.id.fabMainAdd);
         srshMainV = findViewById(R.id.srshMainV);
         lstMainVTask = findViewById(R.id.lstMainVTask);
+        fabMainAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(MainActivity.this,AddTaskActivity.class);
+                startActivity(i);
+
+            }
+        });
 
         //spnr2
         spnrMainSubject=findViewById(R.id.spnrMainSubject);
