@@ -24,6 +24,10 @@ public class MyTask
      */
     public String text;
     /**
+     * نص قصير
+     */
+    public String ShortTitle;
+    /**
      * زمن بناء المهمة
      */
     public long time;
@@ -47,6 +51,7 @@ public class MyTask
                 "keyid=" + keyid +
                 ", importance=" + importance +
                 ", text='" + text + '\'' +
+                ", ShortTitle='" + ShortTitle + '\'' +
                 ", time=" + time +
                 ", isCompleted=" + isCompleted +
                 ", subjeId=" + subjeId +
