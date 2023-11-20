@@ -82,7 +82,7 @@ public class SignInActivity extends AppCompatActivity {
             {// ان كان هنالك حساب الايميل والباسورد ننتقل الى الشاشة الرئسيسة
                 Intent i=new Intent(SignInActivity.this,MainActivity.class);
                 startActivity(i);
-                finish();
+//                finish();
 
             }
 

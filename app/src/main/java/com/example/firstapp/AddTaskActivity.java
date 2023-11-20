@@ -54,13 +54,13 @@ public class AddTaskActivity extends AppCompatActivity {
         //استخراج الأهمية
         int Importance = skbrAddTaskImportance.getProgress();
         //فحص النص القصير ان كان فارغ
-        if (ShortTitle.contains(" ") == true) {
+        if (ShortTitle.length() < 2 || ShortTitle.contains(" ") == true) {
             //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
             isAllOk = false;
             //عرض ملاحظة خطأ على الشاشة داخل حقل النص القصير
             etAddTaskShortTitle.setError("Wrong Short Title");
         }
-        if (Text.contains(" ") == true)
+        if (Text.length() < 2 || Text.contains(" ") == true)
         {
             isAllOk = false;
             etAddTaskText.setError("Wrong Text");
