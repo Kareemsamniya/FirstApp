@@ -43,6 +43,10 @@ public class MyTask
      * رقم المستعمل الذي لضاف امهمة
      */
     public long userId;
+    /**
+     * نص الموضوع
+     */
+    public String Subject;
 
 
     @Override

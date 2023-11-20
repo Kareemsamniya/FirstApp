@@ -23,6 +23,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private SeekBar skbrAddTaskImportance;
     private TextInputEditText etAddTaskShortTitle;
     private TextInputEditText etAddTaskText;
+    private TextInputEditText etAddTaskSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class AddTaskActivity extends AppCompatActivity {
         skbrAddTaskImportance = findViewById(R.id.skbrAddTaskImportance);
         etAddTaskShortTitle= findViewById(R.id.etAddTaskShortTitle);
         etAddTaskText= findViewById(R.id.etAddTaskText);
+        etAddTaskSubject=findViewById(R.id.etAddTaskSubject);
     }
     public void onClickAddTaskCancel(View V)
     {
@@ -51,6 +53,8 @@ public class AddTaskActivity extends AppCompatActivity {
         String ShortTitle = etAddTaskShortTitle.getText().toString();
         //استخراج نص النص
         String Text = etAddTaskText.getText().toString();
+        //استخراج نص الموضوع
+        String Subject = etAddTaskSubject.getText().toString();
         //استخراج الأهمية
         int Importance = skbrAddTaskImportance.getProgress();
         //فحص النص القصير ان كان فارغ
@@ -64,6 +68,11 @@ public class AddTaskActivity extends AppCompatActivity {
         {
             isAllOk = false;
             etAddTaskText.setError("Wrong Text");
+        }
+        if (Subject.length() < 2 || Subject.contains(" ") == true)
+        {
+            isAllOk = false;
+            etAddTaskSubject.setError("Wrong Subject");
         }
         if(isAllOk)
         {
@@ -79,6 +88,7 @@ public class AddTaskActivity extends AppCompatActivity {
             myTask.ShortTitle=ShortTitle;
             myTask.text=Text;
             myTask.importance= Importance ;
+            myTask.Subject=Subject;
             //اضافة الكائن للجدول
             taskQuery.insertTask(myTask);
             //اغلاق الشاشة الخالية
