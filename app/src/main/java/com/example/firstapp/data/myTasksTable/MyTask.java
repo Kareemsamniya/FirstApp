@@ -37,7 +37,7 @@ public class MyTask
     /**
      * رقم موضوع المهمة
      */
-    public long subjeId;
+    public long subjId;
     /**
      * رقم المستعمل الذي لضاف امهمة
      */
@@ -53,7 +53,7 @@ public class MyTask
                 ", ShortTitle='" + ShortTitle + '\'' +
                 ", time=" + time +
                 ", isCompleted=" + isCompleted +
-                ", subjeId=" + subjeId +
+                ", subjeId=" + subjId +
                 ", userId='" + userId + '\'' +
                 '}';
     }

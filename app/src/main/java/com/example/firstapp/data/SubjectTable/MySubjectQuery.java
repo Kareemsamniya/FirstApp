@@ -21,6 +21,9 @@ public interface MySubjectQuery
     @Insert
     void insertAll(MySubject mySubjects);
 
+    @Query("SELECT * FROM MySubject WHERE Title = :mySubject")
+    MySubject checkSubject(String mySubject);
+
     @Delete
     void delete(MySubject mySubject);
 

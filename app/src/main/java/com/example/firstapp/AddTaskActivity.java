@@ -48,7 +48,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
         /**
          * استخراج اسماء المواضيع من جدول المواضيع وعرضه بالحقل من نوع
-         * AutoCompletTextView
+         * AutoCompleteTextView
          * طريقة التعامل معه شبيه بال "spinner"
          */
         private void initAutoEtSubjects()
@@ -90,7 +90,7 @@ public class AddTaskActivity extends AppCompatActivity {
         //استخراج نص النص
         String Text = etAddTaskText.getText().toString();
         //استخراج نص الموضوع
-        String Subject = autoEtAddTaskSubject.getText().toString();
+        String SubjText = autoEtAddTaskSubject.getText().toString();
         //استخراج الأهمية
         int Importance = skbrAddTaskImportance.getProgress();
         //فحص النص القصير ان كان فارغ
@@ -105,7 +105,7 @@ public class AddTaskActivity extends AppCompatActivity {
             isAllOk = false;
             etAddTaskText.setError("Wrong Text");
         }
-        if (Subject.length() < 2 || Subject.contains(" ") == true)
+        if (SubjText.length() < 2 || SubjText.contains(" ") == true)
         {
             isAllOk = false;
             autoEtAddTaskSubject.setError("Wrong Subject");
@@ -115,20 +115,24 @@ public class AddTaskActivity extends AppCompatActivity {
             Toast.makeText(this, "All Ok", Toast.LENGTH_SHORT).show();
             //بناء قاعدة بيانات وارجاع مؤشر عليها 1
             AppDatabase db= AppDatabase.getDB(getApplicationContext());
-            //مؤشر لكائن عمليات المهام 2
-            MyTaskQuery taskQuery=db.getMyTaskQuery();
-
-            //بناء كائن
-            MyTask myTask = new MyTask();
+            MySubjectQuery subjectQuery = db.getMySubjectQuery();
+            if(subjectQuery.checkSubject(SubjText)==null)// فحص هل الموضوع موجود من قبل بالجدول
+            {// بناء موضوع جديد واضافته
+                MySubject subject=new MySubject();
+                subject.Title=SubjText;
+                subjectQuery.insert(subject);
+            }
+            //استخراج الموضوع لاننا بحاجة لرقمه التسلسلي id
+            MySubject subject = subjectQuery.checkSubject(SubjText);
+            //بناء مهمة جديدة وتحديد صفاتها
+            MyTask task = new MyTask();
             //تجديد قيم الصفات بالقيم التي استخرجناها
-            myTask.ShortTitle=ShortTitle;
-            myTask.text=Text;
-            myTask.importance= Importance ;
-            myTask.subjeId=Subject;
-            //اضافة الكائن للجدول
-            taskQuery.insertTask(myTask);
-            //اغلاق الشاشة الخالية
-            finish();
+            task.ShortTitle=ShortTitle;
+            task.text=Text;
+            task.importance= Importance;
+            task.subjId=MySubject.getKey_id();// تحديد رقم الموضوع للمهمة
+            db.getMyTaskQuery().insertTask(task);// اضافة المهمة للجدول
+            finish();//اغلاق الشاشة الخالية
 
         }
     }
