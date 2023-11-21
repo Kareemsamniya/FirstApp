@@ -38,6 +38,13 @@
             android:layout_height="wrap_content"
             android:text="Imporrtance" />
 
+        <AutoCompleteTextView
+            android:id="@+id/autoEtAddTaskSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <SeekBar
             android:id="@+id/skbrAddTaskImportance"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
@@ -74,17 +81,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAddTaskSubject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Subject"
-                tools:ignore="TouchTargetSizeCheck" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

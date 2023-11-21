@@ -1,7 +1,10 @@
 package com.example.firstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -10,11 +13,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firstapp.data.AppDatabase;
+import com.example.firstapp.data.SubjectTable.MySubject;
+import com.example.firstapp.data.SubjectTable.MySubjectQuery;
 import com.example.firstapp.data.myTasksTable.MyTask;
 import com.example.firstapp.data.myTasksTable.MyTaskQuery;
-import com.example.firstapp.data.useresTable.MyUser;
-import com.example.firstapp.data.useresTable.MyUserQuery;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.sql.Array;
+import java.util.List;
+
 public class AddTaskActivity extends AppCompatActivity {
 
     private Button btnAddTaskSaveTask;
@@ -23,7 +30,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private SeekBar skbrAddTaskImportance;
     private TextInputEditText etAddTaskShortTitle;
     private TextInputEditText etAddTaskText;
-    private TextInputEditText etAddTaskSubject;
+    private AutoCompleteTextView autoEtAddTaskSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +40,39 @@ public class AddTaskActivity extends AppCompatActivity {
         btnAddTaskCancelTask = findViewById(R.id.btnAddTaskCancelTask);
         tvAddTaskImportance = findViewById(R.id.tvAddTaskImportance);
         skbrAddTaskImportance = findViewById(R.id.skbrAddTaskImportance);
-        etAddTaskShortTitle= findViewById(R.id.etAddTaskShortTitle);
-        etAddTaskText= findViewById(R.id.etAddTaskText);
-        etAddTaskSubject=findViewById(R.id.etAddTaskSubject);
+        etAddTaskShortTitle = findViewById(R.id.etAddTaskShortTitle);
+        etAddTaskText = findViewById(R.id.etAddTaskText);
+        autoEtAddTaskSubject = findViewById(R.id.autoEtAddTaskSubject);
+        initAutoEtSubjects();
     }
+
+        /**
+         * استخراج اسماء المواضيع من جدول المواضيع وعرضه بالحقل من نوع
+         * AutoCompletTextView
+         * طريقة التعامل معه شبيه بال "spinner"
+         */
+        private void initAutoEtSubjects()
+        {
+            // مؤشر لقاعدة البيانات
+            AppDatabase db=AppDatabase.getDB(getApplicationContext());
+            // مؤشر لواجهة استعلامات جدول المواضيع
+            MySubjectQuery subjectQuery = db.getMySubjectQuery();
+            // مصدر المعطيات: استخراج جميع المواضيع من الجدول
+            List<MySubject> allSubjects = subjectQuery.getAll();
+            // تجهيز الوسيط
+            ArrayAdapter<MySubject> adapter=new ArrayAdapter<MySubject>(this, android.R.layout.simple_dropdown_item_1line);
+            adapter.addAll(allSubjects); //اضافة جميع المعطيات للوسيط
+            autoEtAddTaskSubject.setAdapter(adapter);// ربط الحقل بالوسيط
+            // معالجة حدث لعرض المواضيع عند الضغط على الحقل
+            autoEtAddTaskSubject.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                   autoEtAddTaskSubject.showDropDown();
+                }
+            });
+        }
+
     public void onClickAddTaskCancel(View V)
     {
 
@@ -54,7 +90,7 @@ public class AddTaskActivity extends AppCompatActivity {
         //استخراج نص النص
         String Text = etAddTaskText.getText().toString();
         //استخراج نص الموضوع
-        String Subject = etAddTaskSubject.getText().toString();
+        String Subject = autoEtAddTaskSubject.getText().toString();
         //استخراج الأهمية
         int Importance = skbrAddTaskImportance.getProgress();
         //فحص النص القصير ان كان فارغ
@@ -72,7 +108,7 @@ public class AddTaskActivity extends AppCompatActivity {
         if (Subject.length() < 2 || Subject.contains(" ") == true)
         {
             isAllOk = false;
-            etAddTaskSubject.setError("Wrong Subject");
+            autoEtAddTaskSubject.setError("Wrong Subject");
         }
         if(isAllOk)
         {
@@ -88,7 +124,7 @@ public class AddTaskActivity extends AppCompatActivity {
             myTask.ShortTitle=ShortTitle;
             myTask.text=Text;
             myTask.importance= Importance ;
-            myTask.Subject=Subject;
+            myTask.subjeId=Subject;
             //اضافة الكائن للجدول
             taskQuery.insertTask(myTask);
             //اغلاق الشاشة الخالية

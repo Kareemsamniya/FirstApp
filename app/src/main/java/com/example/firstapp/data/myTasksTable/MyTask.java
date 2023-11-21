@@ -1,6 +1,5 @@
 package com.example.firstapp.data.myTasksTable;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -43,10 +42,6 @@ public class MyTask
      * رقم المستعمل الذي لضاف امهمة
      */
     public long userId;
-    /**
-     * نص الموضوع
-     */
-    public String Subject;
 
 
     @Override
@@ -59,7 +54,7 @@ public class MyTask
                 ", time=" + time +
                 ", isCompleted=" + isCompleted +
                 ", subjeId=" + subjeId +
-                ", userId=" + userId +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 
