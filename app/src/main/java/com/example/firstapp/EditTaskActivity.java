@@ -1,6 +1,7 @@
 package com.example.firstapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -29,8 +30,10 @@ public class EditTaskActivity extends AppCompatActivity {
         skbrEditTaskImportance = findViewById(R.id.skbrEditTaskImportance);
         etEditTaskShortTitle= findViewById(R.id.etEditTaskShortTitle);
         etEditTaskText= findViewById(R.id.etEditTaskText);
+    }
+    public void onClickEditTaskCancel(View V)
+    {
 
-
-
+        finish();
     }
 }
