@@ -130,7 +130,7 @@ public class AddTaskActivity extends AppCompatActivity {
             task.ShortTitle=ShortTitle;
             task.text=Text;
             task.importance= Importance;
-            task.subjId=MySubject.getKey_id();// تحديد رقم الموضوع للمهمة
+            task.subjId=subject.getKey_id();// تحديد رقم الموضوع للمهمة
             db.getMyTaskQuery().insertTask(task);// اضافة المهمة للجدول
             finish();//اغلاق الشاشة الخالية
 
