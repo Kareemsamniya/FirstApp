@@ -22,9 +22,12 @@ public interface MyTaskQuery
     List<MyTask> getAllTasks();
 
 
+    @Query("SELECT * FROM MyTask WHERE subjId=:subjId_p")
+    List<MyTask> getTaskBySubjId(long subjId_p);
+
+
     @Query("SELECT * FROM MyTask WHERE userID=:userId_p " +
             "ORDER BY time DESC")
-
             List<MyTask> getAllTasks(long userId_p);
 
     /**
