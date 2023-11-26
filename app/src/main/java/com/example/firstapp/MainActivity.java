@@ -3,6 +3,7 @@ package com.example.firstapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -48,25 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //معالج حدث لاختيار موضوع بالسبنر
-        spnrMainSubject.setOnClickListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // i استخراج الموضوع حسب رقمه الترتيبي
-                String item = subjectAdapter.getItem(i);
-                if (item.equals("ALL"))//هذه يعني عرض جميع المهام
-                    initAllListView();
-                else {
-                    //استحراج كائن الموضوع الذي اخترناه حسب رقمه الترتيبي id
-                    MySubject subject = subjectQuery.checkSubject(item);
-                    //استدعاء العملية التي تجهز القائنة حسب رقم الموضوع  id
-                    initListViewBySubjId(subject.getKey_id());
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?>adapterView)
-            {}
-        });
+
     }
 
         /**
@@ -80,11 +63,31 @@ public class MainActivity extends AppCompatActivity {
             //تجهيز الوسيط
             ArrayAdapter<String> subjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
             subjectAdapter.add("ALL");//ستظهر اولا بالسبنر تعني عرض جميع المهمات
-            for(MySubject subject : allSubjects)//اضافة المواضيع للوسيط
+
+            for(MySubject subject : allSubjects)// اضافة المواضيع للوسيط
             {
                 subjectAdapter.add(subject.Title);
             }
             spnrMainSubject.setAdapter(subjectAdapter);//ربط السبنر بالوسيط
+            //معالج حدث لاختيار موضوع بالسبنر
+            spnrMainSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    // i استخراج الموضوع حسب رقمه الترتيبي
+                    String item = subjectAdapter.getItem(i);
+                    if (item.equals("ALL"))//هذه يعني عرض جميع المهام
+                        initAllListView();
+                    else {
+                        //استحراج كائن الموضوع الذي اخترناه حسب رقمه الترتيبي id
+                        MySubject subject = subjectQuery.checkSubject(item);
+                        //استدعاء العملية التي تجهز القائنة حسب رقم الموضوع  id
+                        initListViewBySubjId(subject.getKey_id());
+                    }
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?>adapterView)
+                {}
+            });
         }
 
         /**
@@ -101,6 +104,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+        /**
+         * تجهيز قائمة المهمات حسب رقم الموضوع
+         * @param key_id رقم الموضوع
+         */
+        private void initViewBySubjId(long key_id)
+        {
+            AppDatabase db=AppDatabase.getDB(getApplicationContext());
+            MyTaskQuery taskQuery = db.getMyTaskQuery();// يجب اضافة عملية تعيد جميع المهمات حسب رقم الموضوع
+            List<MyTask>allTasks=taskQuery.getTaskBySubjId(key_id);
+
+            ArrayAdapter<MyTask>tasksAdapter=new ArrayAdapter<MyTask>(this, android.R.layout.simple_dropdown_item_1line);
+            tasksAdapter.addAll(allTasks);
+            lstMainVTask.setAdapter(tasksAdapter);
+        }
+
     /**
      * تجهيز قائمة المهمات حسب رقم الموضوع
      * @param key_id رقم الموضوع
@@ -115,6 +134,12 @@ public class MainActivity extends AppCompatActivity {
         taskAdapter.addAll(allTasks);
         lstMainVTask.setAdapter(taskAdapter);
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+return true;
     }
 
 
