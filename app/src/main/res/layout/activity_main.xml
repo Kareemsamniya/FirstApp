@@ -17,6 +17,7 @@
         android:layout_alignParentBottom="true"
         android:baselineAlignBottom="false"
         android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout

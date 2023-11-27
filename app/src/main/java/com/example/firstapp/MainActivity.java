@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         fabMainAdd = findViewById(R.id.fabMainAdd);
         srshMainV = findViewById(R.id.srshMainV);
         lstMainVTask = findViewById(R.id.lstMainVTask);
+        spnrMainSubject=findViewById(R.id.spnrMainSubject);
         fabMainAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,8 +52,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initSubjectSpnr();
+        initAllListView();
+    }
 
-        /**
+
+    /**
          * عملية تجهيز السبنر بالمواضيع
          */
         private void initSubjectSpnr()
@@ -178,12 +186,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "OnRestart", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("ka","onResume");
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
-    }
+
 
     @Override
     protected void onPause() {
