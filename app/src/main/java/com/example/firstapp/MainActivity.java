@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spnrMainSubject;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
         initSubjectSpnr();
         initAllListView();
     }
+
 
 
     /**
@@ -153,16 +157,17 @@ public class MainActivity extends AppCompatActivity {
     @Override//معالجة حدث اختيار عنصر من القائمة
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if(item.getItemId()==R.id.itemSettings)
-        {
-            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-        }
+
         if(item.getItemId()==R.id.itemSignOut)
         {
             Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
+            finish();
         }
         if(item.getItemId()==R.id.itemAddTask)
         {
+            Toast.makeText(this, "Add Task", Toast.LENGTH_SHORT).show();
+            Intent i=new Intent(MainActivity.this,AddTaskActivity.class);
+            startActivity(i);
         }
         return true;
     }
