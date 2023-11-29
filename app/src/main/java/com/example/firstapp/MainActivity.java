@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -174,7 +175,16 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * دالة مساعدة لفتح قائمة
+     * بارامتر للكائن الذي سبب فتح القائمة
+     * @param v
      */
+    public void showPopUpMenu(View v)
+    {
+        //بناء قائمة popup menu
+        PopupMenu popup = new PopupMenu(this, v);//الكائن الذي سبب فتح القائمة v
+        //فتح القائمة
+        popup.inflate(R.menu.popup_menu);
+    }
 
 
 
