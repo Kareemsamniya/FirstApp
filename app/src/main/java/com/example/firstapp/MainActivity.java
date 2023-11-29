@@ -172,6 +172,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * دالة مساعدة لفتح قائمة
+     */
 
 
 
