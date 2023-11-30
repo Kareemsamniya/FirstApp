@@ -21,6 +21,7 @@ import com.example.firstapp.data.SubjectTable.MySubject;
 import com.example.firstapp.data.SubjectTable.MySubjectQuery;
 import com.example.firstapp.data.myTasksTable.MyTask;
 import com.example.firstapp.data.myTasksTable.MyTaskQuery;
+import com.example.firstapp.data.useresTable.MyUser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     //spnr1
     private Spinner spnrMainSubject;
+
 
 
 
@@ -182,9 +184,35 @@ public class MainActivity extends AppCompatActivity {
     {
         //بناء قائمة popup menu
         PopupMenu popup = new PopupMenu(this, v);//الكائن الذي سبب فتح القائمة v
-        //فتح القائمة
+        //ملف القائمة
         popup.inflate(R.menu.popup_menu);
+        //اضفة معالج حدث لاختيار عنصر من القائمة
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem)
+            {
+                if(menuItem.getItemId()==R.id.itemAddTask)
+                {
+                    //هنا نكتب رد الفعل لاختيار هذا العنصر من القائمة
+                    Toast.makeText(MainActivity.this, "Add", Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(MainActivity.this,AddTaskActivity.class);
+                    startActivity(i);
+                }
+                if(menuItem.getItemId()==R.id.itemDelete)
+                {
+                    Toast.makeText(MainActivity.this, "Delete", Toast.LENGTH_SHORT).show();
+                }
+                if(menuItem.getItemId()==R.id.itemEdit)
+                {
+                    Toast.makeText(MainActivity.this, "Edit", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+        popup.show();//فتح وعرض القائمة
     }
+
+
 
 
 
