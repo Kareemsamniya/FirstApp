@@ -1,5 +1,6 @@
 package com.example.firstapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firstapp.data.AppDatabase;
@@ -68,72 +70,80 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-         * عملية تجهيز السبنر بالمواضيع
-         */
-        private void initSubjectSpnr()
-        {
-            AppDatabase db = AppDatabase.getDB(getApplicationContext());//ثاعدة بناء
-            MySubjectQuery subjectQuery = db.getMySubjectQuery();//عملياات جدول المواضيع
-            List<MySubject>allSubjects = subjectQuery.getAll();//استحراج جميع المواضيع
-            //تجهيز الوسيط
-            ArrayAdapter<String> subjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
-            subjectAdapter.add("ALL");//ستظهر اولا بالسبنر تعني عرض جميع المهمات
+     * عملية تجهيز السبنر بالمواضيع
+     */
+    private void initSubjectSpnr()
+    {
+        AppDatabase db = AppDatabase.getDB(getApplicationContext());//ثاعدة بناء
+        MySubjectQuery subjectQuery = db.getMySubjectQuery();//عملياات جدول المواضيع
+        List<MySubject>allSubjects = subjectQuery.getAll();//استحراج جميع المواضيع
+        //تجهيز الوسيط
+        ArrayAdapter<String> subjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
+        subjectAdapter.add("ALL");//ستظهر اولا بالسبنر تعني عرض جميع المهمات
 
-            for(MySubject subject : allSubjects)// اضافة المواضيع للوسيط
-            {
-                subjectAdapter.add(subject.Title);
-            }
-            spnrMainSubject.setAdapter(subjectAdapter);//ربط السبنر بالوسيط
-            //معالج حدث لاختيار موضوع بالسبنر
-            spnrMainSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    // i استخراج الموضوع حسب رقمه الترتيبي
-                    String item = subjectAdapter.getItem(i);
-                    if (item.equals("ALL"))//هذه يعني عرض جميع المهام
-                        initAllListView();
-                    else {
-                        //استحراج كائن الموضوع الذي اخترناه حسب رقمه الترتيبي id
-                        MySubject subject = subjectQuery.checkSubject(item);
-                        //استدعاء العملية التي تجهز القائنة حسب رقم الموضوع  id
-                        initListViewBySubjId(subject.getKey_id());
-                    }
+        for(MySubject subject : allSubjects)// اضافة المواضيع للوسيط
+        {
+            subjectAdapter.add(subject.Title);
+        }
+        spnrMainSubject.setAdapter(subjectAdapter);//ربط السبنر بالوسيط
+        //معالج حدث لاختيار موضوع بالسبنر
+        spnrMainSubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // i استخراج الموضوع حسب رقمه الترتيبي
+                String item = subjectAdapter.getItem(i);
+                if (item.equals("ALL"))//هذه يعني عرض جميع المهام
+                    initAllListView();
+                else {
+                    //استحراج كائن الموضوع الذي اخترناه حسب رقمه الترتيبي id
+                    MySubject subject = subjectQuery.checkSubject(item);
+                    //استدعاء العملية التي تجهز القائنة حسب رقم الموضوع  id
+                    initListViewBySubjId(subject.getKey_id());
                 }
-                @Override
-                public void onNothingSelected(AdapterView<?>adapterView)
-                {}
-            });
-        }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?>adapterView)
+            {}
+        });
+    }
 
-        /**
-         * تجهيز قائمة جميع المهمات وعرضها ب listview
-         */
-        private void initAllListView()
-        {
-            AppDatabase db =AppDatabase.getDB(getApplicationContext());
-            MyTaskQuery taskQuery = db.getMyTaskQuery();
-            List<MyTask>allTasks = taskQuery.getAllTasks();
-            ArrayAdapter<MyTask>tsksAdapter=new ArrayAdapter<MyTask>(this, android.R.layout.simple_dropdown_item_1line);
-            tsksAdapter.addAll(allTasks);
-            lstMainVTask.setAdapter(tsksAdapter);
-        }
+    /**
+     * تجهيز قائمة جميع المهمات وعرضها ب listview
+     */
+    private void initAllListView()
+    {
+        AppDatabase db =AppDatabase.getDB(getApplicationContext());
+        MyTaskQuery taskQuery = db.getMyTaskQuery();
+        List<MyTask>allTasks = taskQuery.getAllTasks();
+        ArrayAdapter<MyTask>tsksAdapter=new ArrayAdapter<MyTask>(this, android.R.layout.simple_dropdown_item_1line);
+        tsksAdapter.addAll(allTasks);
+        lstMainVTask.setAdapter(tsksAdapter);
+        lstMainVTask.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                {
+                    showPopUpMenu(view, tsksAdapter.getItem(i));//رقم العنصر الذي سبب الخدث id
+                }
+            }
+        });
+    }
 
 
 
-        /**
-         * تجهيز قائمة المهمات حسب رقم الموضوع
-         * @param key_id رقم الموضوع
-         */
-        private void initViewBySubjId(long key_id)
-        {
-            AppDatabase db=AppDatabase.getDB(getApplicationContext());
-            MyTaskQuery taskQuery = db.getMyTaskQuery();// يجب اضافة عملية تعيد جميع المهمات حسب رقم الموضوع
-            List<MyTask>allTasks=taskQuery.getTaskBySubjId(key_id);
+    /**
+     * تجهيز قائمة المهمات حسب رقم الموضوع
+     * @param key_id رقم الموضوع
+     */
+    private void initViewBySubjId(long key_id)
+    {
+        AppDatabase db=AppDatabase.getDB(getApplicationContext());
+        MyTaskQuery taskQuery = db.getMyTaskQuery();// يجب اضافة عملية تعيد جميع المهمات حسب رقم الموضوع
+        List<MyTask>allTasks=taskQuery.getTaskBySubjId(key_id);
 
-            ArrayAdapter<MyTask>tasksAdapter=new ArrayAdapter<MyTask>(this, android.R.layout.simple_dropdown_item_1line);
-            tasksAdapter.addAll(allTasks);
-            lstMainVTask.setAdapter(tasksAdapter);
-        }
+        ArrayAdapter<MyTask>tasksAdapter=new ArrayAdapter<MyTask>(this, android.R.layout.simple_dropdown_item_1line);
+        tasksAdapter.addAll(allTasks);
+        lstMainVTask.setAdapter(tasksAdapter);
+    }
 
     /**
      * تجهيز قائمة المهمات حسب رقم الموضوع
@@ -164,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId()==R.id.itemSignOut)
         {
             Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
-            finish();
         }
         if(item.getItemId()==R.id.itemAddTask)
         {
@@ -179,8 +188,9 @@ public class MainActivity extends AppCompatActivity {
      * دالة مساعدة لفتح قائمة
      * بارامتر للكائن الذي سبب فتح القائمة
      * @param v
+     * @param item
      */
-    public void showPopUpMenu(View v)
+    public void showPopUpMenu(View v, MyTask item)
     {
         //بناء قائمة popup menu
         PopupMenu popup = new PopupMenu(this, v);//الكائن الذي سبب فتح القائمة v
@@ -210,6 +220,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         popup.show();//فتح وعرض القائمة
+    }
+
+    /**
+     * تجهيو ديالوج
+     */
+    public void showYesNoDialog()
+    {
+        //تجهيز بناء شباك حوار "ديالوج" يتلقى بارامتر مؤشر للنشاط (اكتيفيتي) الحالي
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Log out");//تحديد العنوان
+        builder.setMessage("Are you sure?");//تحديد فحوى شباك الحوار
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                //
+                Toast.makeText(MainActivity.this, "Signing out", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                Toast.makeText(MainActivity.this, "Signing out", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog dialog = builder.create();//بناء شباك الحوار(ديالوج)
+        dialog.show();//عرض الشباك
     }
 
 
