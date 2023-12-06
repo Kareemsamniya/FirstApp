@@ -55,7 +55,6 @@ public abstract class AppDatabase extends RoomDatabase
      * @param context
      * @return
      */
-
     /**
      *singilton(عند اعادة الكائن يعيده مرة واحدة)
      */

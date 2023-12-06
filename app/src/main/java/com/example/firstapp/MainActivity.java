@@ -134,21 +134,6 @@ public class MainActivity extends AppCompatActivity {
      * تجهيز قائمة المهمات حسب رقم الموضوع
      * @param key_id رقم الموضوع
      */
-    private void initViewBySubjId(long key_id)
-    {
-        AppDatabase db=AppDatabase.getDB(getApplicationContext());
-        MyTaskQuery taskQuery = db.getMyTaskQuery();// يجب اضافة عملية تعيد جميع المهمات حسب رقم الموضوع
-        List<MyTask>allTasks=taskQuery.getTaskBySubjId(key_id);
-
-        ArrayAdapter<MyTask>tasksAdapter=new ArrayAdapter<MyTask>(this, android.R.layout.simple_dropdown_item_1line);
-        tasksAdapter.addAll(allTasks);
-        lstMainVTask.setAdapter(tasksAdapter);
-    }
-
-    /**
-     * تجهيز قائمة المهمات حسب رقم الموضوع
-     * @param key_id رقم الموضوع
-     */
     private void initListViewBySubjId(long key_id)
     {
         AppDatabase db=AppDatabase.getDB(getApplicationContext());
@@ -174,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId()==R.id.itemSignOut)
         {
             Toast.makeText(this, "Log Out", Toast.LENGTH_SHORT).show();
+            showYesNoDialog();
         }
         if(item.getItemId()==R.id.itemAddTask)
         {
