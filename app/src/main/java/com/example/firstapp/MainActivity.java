@@ -197,6 +197,11 @@ public class MainActivity extends AppCompatActivity {
                 if(menuItem.getItemId()==R.id.itemDelete)
                 {
                     Toast.makeText(MainActivity.this, "Delete", Toast.LENGTH_SHORT).show();
+                    AppDatabase db = AppDatabase.getDB(MainActivity.this);
+                    MyTaskQuery myTaskQuery = db.getMyTaskQuery();
+                    myTaskQuery.delTaskId(item.keyid);
+                    initAllListView();
+                    initSubjectSpnr();
                 }
                 if(menuItem.getItemId()==R.id.itemEdit)
                 {
