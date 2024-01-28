@@ -100,12 +100,12 @@ public class AddTaskActivity extends AppCompatActivity {
             //عرض ملاحظة خطأ على الشاشة داخل حقل النص القصير
             etAddTaskShortTitle.setError("Wrong Short Title");
         }
-        if (Text.length() < 2 || Text.contains(" ") == true)
+        if (Text.length() < 2 )
         {
             isAllOk = false;
             etAddTaskText.setError("Wrong Text");
         }
-        if (SubjText.length() < 2 || SubjText.contains(" ") == true)
+        if (SubjText.length() < 2 )
         {
             isAllOk = false;
             autoEtAddTaskSubject.setError("Wrong Subject");

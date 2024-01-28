@@ -59,9 +59,9 @@ public abstract class AppDatabase extends RoomDatabase
      *singilton(عند اعادة الكائن يعيده مرة واحدة)
      */
     public static AppDatabase getDB(Context context) {
-        if (db == null) {
-            db = Room.databaseBuilder(context,
-                            AppDatabase.class, "database-name")//اسم
+        if (db == null)
+        {
+            db = Room.databaseBuilder(context, AppDatabase.class, "database-name")//  اسم قاعدة البيانات
                     .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();

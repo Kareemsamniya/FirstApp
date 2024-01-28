@@ -123,5 +123,52 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     }
+    private void checkAndSignUP_FB()
+    {
+        boolean isAllOk = true;// يحوي نتيجة فحص الحقول ان كانت سليمة
+        //استخراج النص من حقل الايميل
+        String Email = etSignUpEmail.getText().toString();
+        //استخراج نص كلمة المرور
+        String Password = etSignUpPassword.getText().toString();
+        //استخراج نص تأكيد كلمة المرور
+        String RePassword = etSignUpRepassword.getText().toString();
+        //استخراج نص الاسم
+        String Name = etSignUpName.getText().toString();
+        //استخراج نص رقم الهاتف
+        String Phone = etSignUpPhone.getText().toString();
+        //فحص الايميل ان كان طوله اقل من 6 او لا يحوي @ فهو خطأ
+        if (Email.length() < 6 || Email.contains("@") == false)
+        {
+            //تعديل المتغير ليدل على ان الفحص يعطي نتيجة خاطئة
+            isAllOk = false;
+            //عرض ملاحظة خطأ على الشاشة داخل حقل البريد
+            etSignUpEmail.setError("Wrong Email");
+        }
+        if(Password.length() < 8 || Password.contains(" ") == true)
+        {
+            isAllOk = false;
+            etSignUpPassword.setError("Wrong Password");
+        }
+        if(RePassword.contains(" ") == true || RePassword.equals(Password) == false )
+        {
+            isAllOk = false;
+            etSignUpRepassword.setError("Wrong Re-Password");
+        }
+        if(Name.length() < 2 || Name.contains(" ") == true)
+        {
+            isAllOk = false;
+            etSignUpName.setError("Wrong Name");
+        }
+        if(Phone.length() != 10 || Phone.contains(" ") == true )
+        {
+            isAllOk = false;
+            etSignUpPhone.setError("Wrong Phone");
+        }
+        if(isAllOk)
+        {
+            //עצם
+        }
+    }
+
 
 }
