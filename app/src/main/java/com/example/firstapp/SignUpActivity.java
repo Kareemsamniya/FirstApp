@@ -1,5 +1,6 @@
 package com.example.firstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +12,11 @@ import android.widget.Toast;
 import com.example.firstapp.data.AppDatabase;
 import com.example.firstapp.data.useresTable.MyUser;
 import com.example.firstapp.data.useresTable.MyUserQuery;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -50,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void onClickSignUp(View V)
     {
 
-        checkSignUp();
+        checkAndSignUP_FB();
     }
     private void checkSignUp()
     {
@@ -166,7 +171,23 @@ public class SignUpActivity extends AppCompatActivity {
         }
         if(isAllOk)
         {
-            //עצם
+            //עצם לביצוע רישום كائن لعملية التسجيل
+            FirebaseAuth auth= FirebaseAuth.getInstance();
+            //יצירת חשבון בעזרת מיל וסיסמא
+            auth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override//התגובה שמתקבל הניסיון הרישום בענן
+                public void onComplete(@NonNull Task<AuthResult> task) {//הפרמטר מכיל מידע מהשרת על תוצאת הבקשה לרישום
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(SignUpActivity.this, "Signing up succeeded", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(SignUpActivity.this, "Signing up failed", Toast.LENGTH_SHORT).show();
+                        etSignUpEmail.setError(task.getException().getMessage());//הצגת הודעת השגיאה שהתקבלה מהענן
+                    }
+                }
+            });
         }
     }
 
